@@ -1156,9 +1156,11 @@ form{
     max-width: 900px;
     width: 100%;
     background: #fff;
-    margin: 0 20px;
+    margin: 100px 20px;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+
 }
 .input-box i,
 .input-box .button {
@@ -1216,3 +1218,48 @@ form{
     }
 }
 
+
+
+
+/*custom css*/
+
+
+
+
+
+.strike-text {
+    color: red;
+    text-decoration: line-through
+}
+
+.product-image {
+    width: 50%;
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.spec-1 {
+    color: #938787;
+    font-size: 15px
+}
+
+h5 {
+    font-weight: 400
+}
+
+.para {
+    font-size: 16px
+}
+
+body{
+    align-content: center;
+}

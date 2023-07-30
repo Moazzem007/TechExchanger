@@ -29,16 +29,16 @@
                             <label class="control-label">Condition</label>
                             <select class="form-control" name="condition">
                                 <option disabled selected>Choose condition</option>
-                                <option value="new">New</option>
-                                <option value="used">Used</option>
+                                <option value="New">New</option>
+                                <option value="Used">Used</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Authenticity</label>
                             <select class="form-control" name="authenticity">
                                 <option disabled selected>Choose authenticity</option>
-                                <option value="new">Original</option>
-                                <option value="used">Refurbished</option>
+                                <option value="Original">Original</option>
+                                <option value="Refurbished">Refurbished</option>
                             </select>
                         </div>
                         <div class="card-body">

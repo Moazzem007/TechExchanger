@@ -55,7 +55,7 @@
 
 @include('home.brandarea')
 
-@include('home.productwidget')
+{{--@include('home.productwidget')--}}
 
 @include('home.footer')
 

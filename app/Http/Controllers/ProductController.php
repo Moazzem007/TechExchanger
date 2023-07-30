@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -64,9 +65,9 @@ class ProductController extends Controller
             $uniqueID = Str::random(10000)+1;
             $photo3 = $request->image3;
             $photo3name = $uniqueID.'.'.$photo3->getClientOriginalExtension();
-            $target = public_path('media/'.$photo3name);
+            $target = public_path('media'.$photo3name);
             Image::make($photo3)->fit(400,600)->save($target);
-            $data['image3'] = 'media/'.$photo3name;
+            $data['image3'] = 'media.\.'.$photo3name;
         }
 
 
@@ -78,5 +79,13 @@ class ProductController extends Controller
 
 
 
+    }
+
+
+    public function allProducts()
+    {
+        $products = Product::paginate(15);
+        $categories = Category::all();
+        return view('products.allproducts', compact('products', 'categories'));
     }
 }

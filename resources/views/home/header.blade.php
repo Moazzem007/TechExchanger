@@ -16,7 +16,7 @@
 
 <div class="mainmenu-area">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -27,13 +27,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../../../public/home/index.html">Home</a></li>
-                    <li><a href="../../../public/home/shop.html">Shop page</a></li>
-                    <li><a href="../../../public/home/single-product.html">Single product</a></li>
-                    <li><a href="../../../public/home/cart.html">Cart</a></li>
-                    <li><a href="../../../public/home/checkout.html">Checkout</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Others</a></li>
+                    <li class="active"><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="{{route('product.all')}}">All Products</a></li>
+                    <li><a href="{{ route('categories.all') }}">Category</a></li>
                     <li><a href="#">Contact us</a></li>
                     <li id="logincss"><a class="btn btn-warning" href="{{ route('product.create') }}">Sell something</a></li>
 
@@ -43,8 +39,9 @@
                         <li id="logincss"><a class="btn btn-primary" href="{{route('login')}}">Log in</a></li>
                         <li id="registercss"><a class="btn btn-success" href="{{route('register')}}">Register</a></li>
                     @else
+                        <li><a class="btn btn-success" style="float: right;" href="">User Dashboard</a></li>
                         <li id="logincss">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item btn btn-danger" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -54,6 +51,7 @@
                                 @csrf
                             </form>
                         </li>
+
 
 
 

@@ -1,10 +1,23 @@
-<div class="maincontent-area">
-    <div class="zigzag-bottom"></div>
+@extends('products.productpage')
+@section('content')
+
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <h2 class="section-title">Latest Products</h2>
+        <div class="input-box" style="margin-top: 20px; margin-bottom: 20px">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here..." />
+            <button class="button">Search</button>
+        </div>
+    </div>
+
+
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-product">
+                        <h2 class="section-title">All Products</h2>
 
                         <div class="container mt-5 mb-5">
                             <div class="d-flex justify-content-center row">
@@ -27,12 +40,17 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                        {{ $products->links() }}
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a class="btn btn-info" href="{{route('product.all')}}"><b>Show all -></b></a>
-    </div>
-</div> <!-- End main content area -->
+    </div> <!-- End main content area -->
+
+
+
+
+@endsection
