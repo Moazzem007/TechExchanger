@@ -88,4 +88,47 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('products.allproducts', compact('products', 'categories'));
     }
+
+
+    public function singleProduct($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('products.singleProduct', compact('product', 'categories'));
+    }
+
+
+    public function search(Request $request)
+    {
+
+        $search = $request['search'];
+        if ($search != ''){
+            $products = Product::where('brand_name', 'LIKE', "%$search%")->paginate(15);
+            $counted = Product::where('brand_name', 'LIKE', "%$search%")->count();
+            if ($counted == 0){
+                $products = Product::where('model', 'LIKE', "%$search%")->paginate(15);
+                $counted = Product::where('model', 'LIKE', "%$search%")->count();
+
+            }
+            if ($counted == 0){
+                $products = Product::where('features', 'LIKE', "%$search%")->paginate(15);
+                $counted = Product::where('features', 'LIKE', "%$search%")->count();
+
+            }
+            if ($counted == 0){
+                $products = Product::where('description', 'LIKE', "%$search%")->paginate(15);
+                $counted = Product::where('features', 'LIKE', "%$search%")->count();
+            }
+            if ($counted == 0){
+                $products = Product::where('category_id', '=', $search)->paginate(15);
+            }
+
+        }else{
+            $products = Product::paginate(15);
+        }
+        $categories = Category::all();
+
+        return view('products.allproducts', compact('products', 'categories'));
+
+    }
 }

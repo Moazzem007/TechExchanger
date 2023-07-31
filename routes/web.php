@@ -20,12 +20,13 @@ Route::get('/categories/all', [App\Http\Controllers\HomeController::class, 'allC
 Auth::routes();
 
 
-Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create')->middleware('auth');
 
 Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
 
 Route::get('/product/all', [App\Http\Controllers\ProductController::class, 'allProducts'])->name('product.all');
 
+Route::get('/single/product/{id}', [App\Http\Controllers\ProductController::class, 'singleProduct'])->name('single.product');
 
-
+Route::post('/search/all', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
 

@@ -31,7 +31,7 @@
                     <li><a href="{{route('product.all')}}">All Products</a></li>
                     <li><a href="{{ route('categories.all') }}">Category</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li id="logincss"><a class="btn btn-warning" href="{{ route('product.create') }}">Sell something</a></li>
+                    <li id="logincss" style="margin-left: 200px;"><a class="btn btn-warning" href="{{ route('product.create') }}">Sell something</a></li>
 
 
 
@@ -39,7 +39,7 @@
                         <li id="logincss"><a class="btn btn-primary" href="{{route('login')}}">Log in</a></li>
                         <li id="registercss"><a class="btn btn-success" href="{{route('register')}}">Register</a></li>
                     @else
-                        <li><a class="btn btn-success" style="float: right;" href="">User Dashboard</a></li>
+                        <li style="margin-left: 100px;"><a class="btn btn-success" style="float: right;" href="">User Dashboard</a></li>
                         <li id="logincss">
                             <a class="dropdown-item btn btn-danger" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

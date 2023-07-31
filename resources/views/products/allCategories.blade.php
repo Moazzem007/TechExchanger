@@ -2,103 +2,31 @@
 @section('content')
 
 
-        <div class="container mt-100">
+
+
+        <div class="container mt-100" style="margin-top: 50px; margin-bottom: 50px">
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30">
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Laptops</h4>
-                            <p class="text-muted">Starting from $499</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
+                @foreach($categories as $category)
+                    <form id="categoryForm" action="{{route('search')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="search" value="{{$category->id}}" >
+
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card mb-30 categoryCard">
+                            <div class="card-header text-center">
+                                <h4 class="card-title">{{$category->category_name}}</h4>
+                                <button class="btn btn-info" type="submit">View Products</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/uRgdVY1.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/VwSKS7A.jpg" alt="Category"><img src="https://i.imgur.com/gTvZ2H5.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Mobiles</h4>
-                            <p class="text-muted">Starting from $50</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="inner">
-                                <div class="main-img"><img src="https://i.imgur.com/0jO40CF.jpg" alt="Category"></div>
-                                <div class="thumblist"><img src="https://i.imgur.com/dWYAg41.jpg" alt="Category"><img src="https://i.imgur.com/5oQEZSC.jpg" alt="Category"></div>
-                            </div></a>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Accessories</h4>
-                            <p class="text-muted">Starting from $9</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
-                        </div>
-                    </div>
-                </div>
+
+                    </form>
+                @endforeach
+
             </div>
         </div>
-    </div>
+
 
 
 

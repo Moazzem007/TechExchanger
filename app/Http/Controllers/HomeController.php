@@ -42,6 +42,7 @@ class HomeController extends Controller
 
     public function allCategories()
     {
-        return view('products.allCategories');
+        $categories = Category::all();
+        return view('products.allCategories', compact('categories'));
     }
 }

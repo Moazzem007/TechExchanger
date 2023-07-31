@@ -51,6 +51,8 @@
 
 @include('home.promo')
 
+@include('home.searchbar')
+
 @include('home.maincontent')
 
 @include('home.brandarea')
