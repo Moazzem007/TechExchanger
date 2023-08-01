@@ -30,3 +30,4 @@ Route::get('/single/product/{id}', [App\Http\Controllers\ProductController::clas
 
 Route::post('/search/all', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
+Route::get('/user/dashboard', [\App\Http\Controllers\UserDashboardController::class, 'index'])->name('user.dashboard');
