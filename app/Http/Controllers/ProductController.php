@@ -52,7 +52,7 @@ class ProductController extends Controller
         }
 
         if ($request->image2){
-            $uniqueID = Str::random(10000)+1;
+            $uniqueID = \Illuminate\Support\Str::random(20);
             $photo2 = $request->image1;
             $photo2name = $uniqueID.'.'.$photo2->getClientOriginalExtension();
             $target = public_path('media/'.$photo2name);
@@ -62,7 +62,7 @@ class ProductController extends Controller
         }
 
         if ($request->image3){
-            $uniqueID = Str::random(10000)+1;
+            $uniqueID = \Illuminate\Support\Str::random(20);
             $photo3 = $request->image3;
             $photo3name = $uniqueID.'.'.$photo3->getClientOriginalExtension();
             $target = public_path('media'.$photo3name);

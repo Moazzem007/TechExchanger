@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('unique_id');
             $table->date('release_date')->nullable();
             $table->string('features')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description', 255)->nullable();
             $table->string('price');
             $table->string('image1');
             $table->string('image2')->nullable();

@@ -1,6 +1,6 @@
 
 
-<div class="mainmenu-area" style="margin-top: 20px;">
+<div class="mainmenu-area" style="margin-top: 20px; position: absolute;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="navbar-header">

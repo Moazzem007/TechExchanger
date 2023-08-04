@@ -2,6 +2,16 @@
 @section('content')
 
 
+    @if(session()->has('success'))
+        <script type="text/javascript">
+            function codeAddress() {
+                alert('Successfully Added to Cart');
+            }
+            window.onload = codeAddress;
+        </script>
+
+    @endif
+
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -39,6 +49,7 @@
                                     <form action="" class="cart">
 
                                         <button class="add_to_cart_button" type="submit">Buy now</button>
+                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button"><a href="{{route('cart.add', $product->id)}}">Add to cart</a></button>
                                     </form>
 
                                     <div class="product-inner-category">

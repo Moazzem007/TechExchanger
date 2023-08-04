@@ -31,3 +31,20 @@ Route::get('/single/product/{id}', [App\Http\Controllers\ProductController::clas
 Route::post('/search/all', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
 Route::get('/user/dashboard', [\App\Http\Controllers\UserDashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('/user/products', [\App\Http\Controllers\UserDashboardController::class, 'userProducts'])->name('user.products');
+
+Route::get('/userProducts/edit/{id}', [\App\Http\Controllers\UserDashboardController::class, 'editUserProducts'])->name('userProducts.edit');
+
+Route::post('/product/update/{id}', [App\Http\Controllers\UserDashboardController::class, 'productUpdate'])->name('product.update');
+
+Route::get('/product/delete/{id}', [App\Http\Controllers\UserDashboardController::class, 'productDelete'])->name('userProducts.delete');
+
+Route::post('profile/{id}',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update')->middleware('auth');
+
+Route::get('/user/cart', [\App\Http\Controllers\UserDashboardController::class, 'userCart'])->name('user.cart');
+
+
+Route::get('/user/add/{productId}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+
+Route::get('/user/delete/{productId}', [\App\Http\Controllers\CartController::class, 'deleteFromCart'])->name('cart.delete');

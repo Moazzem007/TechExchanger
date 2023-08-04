@@ -3,6 +3,15 @@
 
 
     @include('home.searchbar')
+    @if(session()->has('success'))
+        <script type="text/javascript">
+            function codeAddress() {
+                alert('Successfully Added to Cart');
+            }
+            window.onload = codeAddress;
+        </script>
+
+    @endif
 
         <div class="maincontent-area">
             <div class="zigzag-bottom"></div>
@@ -30,8 +39,12 @@
                                                     <div class="d-flex flex-row align-items-center">
                                                         <h4 class="mr-1">{{$product->price}}<b>৳</b></h4>
                                                     </div>
-                                                    <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">
-                                                            <a href="{{route('single.product', $product->id)}}">Details</a></button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                                                    <div class="d-flex flex-column mt-4">
+                                                        <button class="btn btn-primary btn-sm" type="button"><a href="{{route('single.product', $product->id)}}">Details</a></button>
+
+                                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button"><a href="{{route('cart.add', $product->id)}}">Add to cart</a></button>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         @endforeach
