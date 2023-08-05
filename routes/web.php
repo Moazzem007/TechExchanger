@@ -48,3 +48,22 @@ Route::get('/user/cart', [\App\Http\Controllers\UserDashboardController::class, 
 Route::get('/user/add/{productId}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
 
 Route::get('/user/delete/{productId}', [\App\Http\Controllers\CartController::class, 'deleteFromCart'])->name('cart.delete');
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+
+Route::post('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+
+Route::get('/admin/users/all', [\App\Http\Controllers\AdminController::class, 'allUsers'])->name('user.all');
+
+Route::get('/admin/users/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editUser'])->name('user.edit');
+
+Route::post('/admin/users/update/{id}', [\App\Http\Controllers\AdminController::class, 'updateUser'])->name('user.update');
+
+Route::get('/admin/products/all', [\App\Http\Controllers\AdminController::class, 'allProducts'])->name('products.all');
+
+
+Route::get('/adminProducts/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editAdminProducts'])->name('adminProducts.edit');
+
+Route::post('/product/update/{id}', [App\Http\Controllers\AdminController::class, 'productUpdate'])->name('adminProducts.update');
+
+Route::get('/product/delete/{id}', [App\Http\Controllers\AdminController::class, 'productDelete'])->name('adminProducts.delete');
