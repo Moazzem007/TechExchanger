@@ -25,14 +25,14 @@
             </li>
             <li>
                 <a href="{{route('products.all')}}">
-                    <i class="pe-7s-note2"></i>
+                    <i class="pe-7s-shopbag"></i>
                     <p>All Products</p>
                 </a>
             </li>
             <li>
-                <a href="{{route('user.cart')}}">
-                    <i class="pe-7s-cart"></i>
-                    <p>My cart</p>
+                <a href="{{route('category.all')}}">
+                    <i class="pe-7s-note2"></i>
+                    <p>All Categories</p>
                 </a>
             </li>
         </ul>

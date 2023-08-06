@@ -154,4 +154,49 @@ class AdminController extends Controller
         $categories = Category::all();
         return view('adminDashboard.allProducts', compact('products', 'categories'));
     }
+
+    public function allCategories()
+    {
+        $categories = Category::all();
+        return view('adminDashboard.allCategories', compact('categories'));
+    }
+
+    public function addCategory()
+    {
+        return view('adminDashboard.addCategory');
+    }
+
+    public function storeCategory(Request $request)
+    {
+        $data = array();
+        $data['category_name'] = $request->category_name;
+        DB::table('categories')->insert($data);
+        $categories = Category::all();
+        return view('adminDashboard.allCategories', compact('categories'));
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::where('id', '=', $id)->first();
+        if ($category) {
+            $category->delete();
+        }
+        $categories = Category::all();
+        return view('adminDashboard.allCategories', compact('categories'));
+    }
+
+    public function editCategory($id)
+    {
+        $category = Category::where('id', '=', $id)->first();
+        return view('adminDashboard.editCategory', compact('category'));
+    }
+
+    public function updateCategory(Request$request, $id)
+    {
+        $data = array();
+        $data['category_name'] = $request->category_name;
+        DB::table('categories')->where('id',$id)->update($data);
+        $categories = Category::all();
+        return view('adminDashboard.allCategories', compact('categories'));
+    }
 }

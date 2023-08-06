@@ -67,3 +67,15 @@ Route::get('/adminProducts/edit/{id}', [\App\Http\Controllers\AdminController::c
 Route::post('/product/update/{id}', [App\Http\Controllers\AdminController::class, 'productUpdate'])->name('adminProducts.update');
 
 Route::get('/product/delete/{id}', [App\Http\Controllers\AdminController::class, 'productDelete'])->name('adminProducts.delete');
+
+Route::get('/admin/categories/all', [\App\Http\Controllers\AdminController::class, 'allCategories'])->name('category.all');
+
+Route::get('/admin/categories/add', [\App\Http\Controllers\AdminController::class, 'addCategory'])->name('category.add');
+
+Route::post('/admin/categories/store', [\App\Http\Controllers\AdminController::class, 'storeCategory'])->name('category.store');
+
+Route::get('/admin/categories/delete/{id}', [\App\Http\Controllers\AdminController::class, 'deleteCategory'])->name('category.delete');
+
+Route::get('/admin/categories/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editCategory'])->name('category.edit');
+
+Route::post('/admin/categories/update/{id}', [\App\Http\Controllers\AdminController::class, 'updateCategory'])->name('category.update');
