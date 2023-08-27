@@ -35,12 +35,15 @@
                                                     <h4 class="mr-1">{{$product->price}}<b>৳</b></h4>
                                                 </div>
                                                 <div class="d-flex flex-column mt-4">
-                                                    <button class="btn btn-outline-primary btn-sm" type="button">
-                                                        <a href="{{route('single.product', $product->id)}}">Details</a>
-                                                    </button>
-                                                    <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                                                        <a href="{{route('cart.add', $product->id)}}">Add to cart</a>
-                                                    </button>
+
+                                                        <a class="btn btn-success" href="{{route('single.product', $product->id)}}">Details</a>
+
+
+                                                        <a class="btn btn-primary" href="{{route('cart.add', $product->id)}}">Add to cart</a>
+
+
+                                                    <a class="btn btn-primary" href="{{route('buy.now', $product->id)}}">Buy Now</a>
+
                                                 </div>
                                             </div>
                                         </div>

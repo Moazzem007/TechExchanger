@@ -23,11 +23,11 @@ return new class extends Migration
             $table->date('release_date')->nullable();
             $table->string('features')->nullable();
             $table->string('description', 255)->nullable();
-            $table->string('price');
+            $table->integer('price');
             $table->string('image1');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
-            $table->integer('clicks')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

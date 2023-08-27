@@ -11,9 +11,7 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
-            </a>
+            <h1><a href="../../../public/home"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
         </div>
 
         <ul class="nav">
@@ -33,6 +31,12 @@
                 <a href="{{route('user.cart')}}">
                     <i class="pe-7s-cart"></i>
                     <p>My cart</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('order.histry')}}">
+                    <i class="pe-7s-cart"></i>
+                    <p>Order History</p>
                 </a>
             </li>
         </ul>

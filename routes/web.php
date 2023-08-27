@@ -38,7 +38,7 @@ Route::get('/userProducts/edit/{id}', [\App\Http\Controllers\UserDashboardContro
 
 Route::post('/product/update/{id}', [App\Http\Controllers\UserDashboardController::class, 'productUpdate'])->name('product.update');
 
-Route::get('/product/delete/{id}', [App\Http\Controllers\UserDashboardController::class, 'productDelete'])->name('userProducts.delete');
+Route::get('/user/product/delete/{id}', [App\Http\Controllers\UserDashboardController::class, 'productDelete'])->name('userProd.delete');
 
 Route::post('profile/{id}',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update')->middleware('auth');
 
@@ -79,3 +79,25 @@ Route::get('/admin/categories/delete/{id}', [\App\Http\Controllers\AdminControll
 Route::get('/admin/categories/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editCategory'])->name('category.edit');
 
 Route::post('/admin/categories/update/{id}', [\App\Http\Controllers\AdminController::class, 'updateCategory'])->name('category.update');
+
+Route::get('/buy/now/{id}', [\App\Http\Controllers\HomeController::class, 'buyNow'])->name('buy.now')->middleware('auth');
+
+Route::post('/payment/success/{id}', [\App\Http\Controllers\HomeController::class, 'paymentSuccess'])->name('payment.success')->middleware('auth');
+
+Route::get('/order/history', [\App\Http\Controllers\HomeController::class, 'orderHistory'])->name('order.histry')->middleware('auth');
+
+Route::get('/order/history', [\App\Http\Controllers\HomeController::class, 'orderHistory'])->name('order.histry')->middleware('auth');
+
+Route::get('/invoice/download/{id}', [\App\Http\Controllers\HomeController::class, 'downloadInvoice'])->name('download.invoice')->middleware('auth');
+
+Route::get('/admin/request/delivery', [\App\Http\Controllers\AdminController::class, 'requestDelivery'])->name('request.delivery');
+
+Route::get('/admin/contact/seller/{id}', [\App\Http\Controllers\AdminController::class, 'contactedSeller'])->name('contacted.seller');
+
+Route::get('/admin/product/refund/{id}', [\App\Http\Controllers\AdminController::class, 'productRefund'])->name('product.refund');
+
+Route::get('/admin/inventory', [\App\Http\Controllers\AdminController::class, 'adminInventory'])->name('admin.inventory');
+
+Route::post('/add/inventory', [\App\Http\Controllers\AdminController::class, 'addInventory'])->name('inventory.add');
+
+Route::get('/product/delivered/{id}', [\App\Http\Controllers\AdminController::class, 'productDelivered'])->name('product.delivered');

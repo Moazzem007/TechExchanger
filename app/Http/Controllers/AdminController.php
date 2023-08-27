@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Inventory;
+use App\Models\OrderHistry;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -199,4 +202,85 @@ class AdminController extends Controller
         $categories = Category::all();
         return view('adminDashboard.allCategories', compact('categories'));
     }
+
+    public function requestDelivery()
+    {
+        $order_histries = OrderHistry::all();
+        $users = User::all();
+        return view('adminDashboard.requestDelivery', compact('order_histries', 'users'));
+    }
+
+    public function contactedSeller($id)
+    {
+        $data = array();
+        $data['contacted_seller'] = 1;
+        DB::table('order_histries')->where('id', '=' ,$id)->update($data);
+        return redirect()->back();
+    }
+
+    public function productRefund($id)
+    {
+
+        $data = array();
+        $data['product_refunded'] = 1;
+        DB::table('order_histries')->where('id', '=' ,$id)->update($data);
+        $product = DB::table('order_histries')->where('id', '=' ,$id)->first();
+        $data = array();
+        $data['product_id'] = $product->product_id;
+        $data['seller_id'] = $product->seller_id;
+        $data['buyer_id'] = $product->buyer_id;
+        $data['brand_name'] = $product->brand_name;
+        $data['model'] = $product->model;
+        $data['image'] = $product->image;
+        $data['contacted_seller'] = $product->contacted_seller;
+        $data['product_delivered'] = $product->product_delivered;
+        $data['product_received'] = $product->product_received;
+        $data['product_refunded'] = $product->product_refunded;
+        $data['buyTime'] = $product->buyTime;
+        DB::table('returns')->insert($data);
+        return redirect()->back();
+    }
+
+    public function adminInventory()
+    {
+        $inventory_products = Inventory::all();
+        $users = User::all();
+        return view('adminDashboard.inventory', compact('inventory_products', 'users') );
+    }
+
+    public function addInventory(Request $request)
+    {
+        $productId = $request->productId;
+        $product = OrderHistry::where('product_id', '=', $productId)->first();
+        $data = array();
+        $data['product_id'] = $product->product_id;
+        $data['seller_id'] = $product->seller_id;
+        $data['buyer_id'] = $product->buyer_id;
+        $data['brand_name'] = $product->brand_name;
+        $data['model'] = $product->model;
+        $data['image'] = $product->image;
+        $data['contacted_seller'] = $product->contacted_seller;
+        $data['product_delivered'] = $product->product_delivered;
+        $data['product_received'] = 1;
+        $data['product_refunded'] = $product->product_refunded;
+        $data['buyTime'] = $product->buyTime;
+        DB::table('inventories')->insert($data);
+
+        $inventory_products = Inventory::all();
+        $users = User::all();
+        return view('adminDashboard.inventory', compact('inventory_products', 'users') );
+    }
+
+    public function productDelivered($id)
+    {
+        $data = array();
+        $data['product_delivered'] = 1;
+        DB::table('order_histries')->where('product_id', '=' ,$id)->update($data);
+        DB::table('inventories')->where('product_id', '=' ,$id)->update($data);
+
+        $inventory_products = Inventory::all();
+        $users = User::all();
+        return view('adminDashboard.inventory', compact('inventory_products', 'users') );
+    }
+
 }

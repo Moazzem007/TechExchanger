@@ -11,9 +11,7 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
-            </a>
+            <h1><a href="../../../public/home"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
         </div>
 
         <ul class="nav">
@@ -33,6 +31,30 @@
                 <a href="{{route('category.all')}}">
                     <i class="pe-7s-note2"></i>
                     <p>All Categories</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('request.delivery') }}">
+                    <i class="pe-7s-note2"></i>
+                    <p>Request Delivery</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.inventory') }}">
+                    <i class="pe-7s-note2"></i>
+                    <p>Inventory(Tech Exchanger)</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="pe-7s-note2"></i>
+                    <p>Delivered Products(Customer)</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="pe-7s-note2"></i>
+                    <p>Refunded</p>
                 </a>
             </li>
         </ul>

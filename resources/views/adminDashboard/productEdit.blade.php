@@ -1,5 +1,5 @@
-@extends('userDashboard.userDashboard')
-@section('userContent')
+@extends('adminDashboard.adminDashboard')
+@section('adminContent')
 
 
     <style>

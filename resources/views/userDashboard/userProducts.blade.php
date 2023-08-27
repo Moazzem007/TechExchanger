@@ -61,7 +61,7 @@
 
                                                 <td>
                                                     <a href="{{route('userProducts.edit', $product->id)}}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                                    <a href="{{ route('userProducts.delete', $product->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{ route('userProd.delete', $product->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
