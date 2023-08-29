@@ -12,7 +12,7 @@
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
             <div class="col-md-12">
                 <div class="latest-product">
                     <h2 class="section-title">Latest Products</h2>
@@ -21,6 +21,7 @@
                             <div class="d-flex justify-content-center row">
                                 <div class="col-md-10">
                                     @foreach($products as $product)
+                                        @if($product->status == null)
                                         <div class="row p-2 bg-white border rounded">
                                             <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{asset($product->image1)}}"></div>
                                             <div class="col-md-6 mt-1">
@@ -36,10 +37,10 @@
                                                 </div>
                                                 <div class="d-flex flex-column mt-4">
 
-                                                        <a class="btn btn-success" href="{{route('single.product', $product->id)}}">Details</a>
+                                                        <a class="btn btn-success" href="{{route('single.product', $product->id)}}" style="margin-top: 25px; margin-bottom: 25px;">Details</a>
 
 
-                                                        <a class="btn btn-primary" href="{{route('cart.add', $product->id)}}">Add to cart</a>
+                                                        <a class="btn btn-primary" href="{{route('cart.add', $product->id)}}" style="margin-top: 25px; margin-bottom: 25px;">Add to cart</a>
 
 
                                                     <a class="btn btn-primary" href="{{route('buy.now', $product->id)}}">Buy Now</a>
@@ -47,6 +48,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

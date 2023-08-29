@@ -72,7 +72,7 @@ class ProductController extends Controller
 
 
         DB::table('products')->insert($data);
-        return redirect()->route('product.create');
+        return redirect()->route('user.products');
 
 
 

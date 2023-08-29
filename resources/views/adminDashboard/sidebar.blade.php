@@ -11,7 +11,7 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <h1><a href="../../../public/home"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
+            <h1><a href="{{route('home')}}"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
         </div>
 
         <ul class="nav">
@@ -46,13 +46,13 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('delivered.page')}}">
                     <i class="pe-7s-note2"></i>
                     <p>Delivered Products(Customer)</p>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('refunded.page')}}">
                     <i class="pe-7s-note2"></i>
                     <p>Refunded</p>
                 </a>

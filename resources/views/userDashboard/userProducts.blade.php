@@ -42,6 +42,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($products as $product)
+                                            @if($product->status == null)
                                             <tr>
                                                 <td>
                                                 @foreach($categories as $category)
@@ -64,6 +65,7 @@
                                                     <a href="{{ route('userProd.delete', $product->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
+                                            @endif
                                         @endforeach
                                         </tbody>
                                     </table>

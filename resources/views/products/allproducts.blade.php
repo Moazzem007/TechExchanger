@@ -25,6 +25,7 @@
                                 <div class="d-flex justify-content-center row">
                                     <div class="col-md-10">
                                         @foreach($products as $product)
+                                            @if($product->status == null)
                                             <div class="row p-2 bg-white border rounded">
                                                 <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{asset($product->image1)}}"></div>
                                                 <div class="col-md-6 mt-1">
@@ -47,6 +48,7 @@
 
                                                 </div>
                                             </div>
+                                            @endif
                                         @endforeach
                                         {{ $products->links() }}
                                     </div>

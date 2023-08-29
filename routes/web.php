@@ -45,9 +45,9 @@ Route::post('profile/{id}',[\App\Http\Controllers\ProfileController::class,'upda
 Route::get('/user/cart', [\App\Http\Controllers\UserDashboardController::class, 'userCart'])->name('user.cart');
 
 
-Route::get('/user/add/{productId}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/user/add/{productId}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
 
-Route::get('/user/delete/{productId}', [\App\Http\Controllers\CartController::class, 'deleteFromCart'])->name('cart.delete');
+Route::get('/user/delete/{productId}', [\App\Http\Controllers\CartController::class, 'deleteFromCart'])->name('cart.delete')->middleware('auth');
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
 
@@ -98,6 +98,12 @@ Route::get('/admin/product/refund/{id}', [\App\Http\Controllers\AdminController:
 
 Route::get('/admin/inventory', [\App\Http\Controllers\AdminController::class, 'adminInventory'])->name('admin.inventory');
 
-Route::post('/add/inventory', [\App\Http\Controllers\AdminController::class, 'addInventory'])->name('inventory.add');
+Route::post('/admin/add/inventory', [\App\Http\Controllers\AdminController::class, 'addInventory'])->name('inventory.add');
 
-Route::get('/product/delivered/{id}', [\App\Http\Controllers\AdminController::class, 'productDelivered'])->name('product.delivered');
+Route::get('/admin/product/delivered/{id}', [\App\Http\Controllers\AdminController::class, 'productDelivered'])->name('product.delivered');
+
+Route::get('/admin/delivered/page', [\App\Http\Controllers\AdminController::class, 'deliveredPage'])->name('delivered.page');
+
+Route::get('/admin/refunded/page', [\App\Http\Controllers\AdminController::class, 'refundedPage'])->name('refunded.page');
+
+Route::get('/contact/page', [App\Http\Controllers\HomeController::class, 'contactPage'])->name('contact.page');

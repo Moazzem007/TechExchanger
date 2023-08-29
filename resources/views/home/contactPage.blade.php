@@ -47,21 +47,53 @@
 @include('home.header')
 
 
-@include('home.slider')
+<div class="container" >
+    <div class="footer-top-area" style="background-color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-6">
+                    <h1>Contact Us</h1>
+                    <div>
 
-@include('home.promo')
+                            <h3 class="my-5"><i class="fa-solid fa-location-dot" style="color: #4180ec;"></i>  Address: House - 19,
+                                <br>Nikunja - 2, Road - 8, <br>Khilkhet, Dhaka, Bangladesh</h3>
+                            <h3 class="my-5"><i class="fa-solid fa-phone" style="color: #3677e7;"></i>  Phone: +8801719811582</h3>
+                            <h3 class="my-5"><i class="fa-solid fa-envelope" style="color: #3e79e0;"></i>  Email: contact.techexchanger@gmail.com</h3>
 
-@include('home.searchbar')
+                    </div>
+                </div>
 
-@include('home.maincontent')
 
-@include('home.brandarea')
+
+                <div class="col-md-5 col-sm-6">
+                    <div class="footer-newsletter">
+                        <h2>Mail Us:</h2>
+                        <h3>Email us anytime about your experience with us or for any kind of query.</h3>
+                        <div class="newsletter-form">
+                            <form action="#" class="form">
+                                <input type="text" class="form-control" placeholder="Your name" style="border: 2px black solid; margin-bottom: 20px;">
+                                <input type="email" class="form-control" placeholder="Your email" style="border: 2px black solid; margin-bottom: 20px;">
+                                <input type="text" class="form-control" placeholder="Subject" style="border: 2px black solid; margin-bottom: 20px;">
+                                <textarea class="form-control" name="description" placeholder="Description" id="summernote" cols="30" rows="10" style="border: 2px black solid; margin-bottom: 20px;"></textarea>
+                                <input type="submit" value="Send">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer top area -->
+</div>
+
+
+
+
 
 {{--@include('home.productwidget')--}}
 
 @include('home.footer')
 
-
+<script src="https://kit.fontawesome.com/184ebe4786.js" crossorigin="anonymous"></script>
 
 <!-- Latest jQuery form server -->
 <script src="https://code.jquery.com/jquery.min.js"></script>

@@ -63,6 +63,7 @@
 
                                                 <td>
                                                     <a href="{{route('cart.delete', $product->id)}}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{route('buy.now', $product->id)}}" class="btn btn-sm btn-info" style="text-decoration: none; color: black; margin-top: 10px;">Buy now</a>
                                                 </td>
                                             </tr>
                                                 @break

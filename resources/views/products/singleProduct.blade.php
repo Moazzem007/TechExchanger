@@ -48,7 +48,7 @@
 
                                     <form action="" class="cart">
 
-                                        <button class="add_to_cart_button" type="submit">Buy now</button>
+                                        <button class="add_to_cart_button" type="button"><a href="{{route('buy.now', $product->id)}}" style="text-decoration: none; color: black;">Buy now</a> </button>
                                         <button class="btn btn-outline-primary btn-sm mt-2" type="button"><a href="{{route('cart.add', $product->id)}}">Add to cart</a></button>
                                     </form>
 

@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -63,8 +64,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+    public function myMail($sendmail, $subject, $description)
+    {
+        $data = ['data' => $description];
+        $user['to'] = $sendmail;
+        $user['subject'] = $subject;
+        Mail::send('mail', $data, function($messages) use ($user){
+            $messages->to($user['to']);
+            $messages->subject($user['subject']);
+        });
+    }
     protected function create(array $data)
     {
+        $this->myMail($data['email'], "Registration successful!!", "Hello sir,
+        We are glad that you have decided to join the tech exchanger team. From here you can easily buy and sell all your electronic goods. Thank you :)");
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

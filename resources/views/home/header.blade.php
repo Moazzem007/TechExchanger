@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="../../../public/home"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
+                    <h1><a href="{{route('home')}}"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     <li class="active"><a href="{{route('home')}}">Home</a></li>
                     <li><a href="{{route('product.all')}}">All Products</a></li>
                     <li><a href="{{ route('categories.all') }}">Category</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="{{route('contact.page')}}">Contact us</a></li>
                     <li id="logincss" style="margin-left: 200px;"><a class="btn btn-warning" href="{{ route('product.create') }}">Sell something</a></li>
 
 

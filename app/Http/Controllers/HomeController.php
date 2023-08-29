@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Cart;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
@@ -25,6 +28,46 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+//        If products are paid for and it does not gets delivered to inventory within 4days of buy date then it will be automatically deleted
+        // Start date
+        $orders = OrderHistry::all();
+
+        foreach ($orders as $order){
+            $date = $order->buyTime;
+            $diff = now()->diffInDays(Carbon::parse($date));
+
+            if ($diff>3){
+                $product = Product::where('id', '=', $order->product_id)->first();
+                $data = array();
+                $data['product_refunded'] = 1;
+                \Illuminate\Support\Facades\DB::table('order_histries')->where('id', '=' ,$order->id)->update($data);
+
+                $buyer = User::where('id', '=', $order->buyer_id)->first();
+                $seller = User::where('id', '=', $order->seller_id)->first();
+
+                $sendmail = $buyer->email;
+                $data = ['data' => "We are sorry to inform you that we did not received your ordered product in our inventory. We have refunded the given price of the item in your account. Thank uou. :)"];
+                $user['to'] = $sendmail;
+                $user['subject'] = "Delivery Cancellation and refund.";
+                Mail::send('mail', $data, function($messages) use ($user){
+                    $messages->to($user['to']);
+                    $messages->subject($user['subject']);
+                });
+
+                $sendmail = $seller->email;
+                $data = ['data' => "Hello sir, Previously we got an order for your product. But because of your unavailablity we had to cancel the order. Thank uou. :)"];
+                $user['to'] = $sendmail;
+                $user['subject'] = "Order Cancellation.";
+                Mail::send('mail', $data, function($messages) use ($user){
+                    $messages->to($user['to']);
+                    $messages->subject($user['subject']);
+                });
+            }
+        }
+
+        // End date
+
+
 
     }
 
@@ -33,6 +76,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    public function myMail($sendmail, $subject, $description)
+    {
+        $data = ['data' => $description];
+        $user['to'] = $sendmail;
+        $user['subject'] = $subject;
+        Mail::send('mail', $data, function($messages) use ($user){
+            $messages->to($user['to']);
+            $messages->subject($user['subject']);
+        });
+    }
     public function index()
     {
         $categories = Category::all();
@@ -57,12 +112,20 @@ class HomeController extends Controller
 
     public function buyNow($id)
     {
+        $cart = Cart::where('product_id', '=', $id)->first();
+        if ($cart){
+            $cart->delete();
+        }
+
         $product = Product::where('id', '=', $id)->first();
         return view('home.buyNow', compact('product'));
+
     }
 
     public function paymentSuccess(Request $request, $product_id)
     {
+
+
 
         $buyTime = date('Y-m-d');
 
@@ -71,6 +134,14 @@ class HomeController extends Controller
         \Illuminate\Support\Facades\DB::table('products')->where('id', '=' ,$product_id)->update($data);
 
         $product = Product::where('id', '=', $product_id)->first();
+        $user = User::where('id', '=', Auth::id())->first();
+        $this->myMail($user->email, "Product purchase confirmation!!", "Hello sir,
+        We are glad to inform you that you have successfully paid for .$product->brand_name. .$product->model.. Thank you for purchasing this product.
+        Next Steps:
+        -> First we will call and request the seller to send the product to our warehouse.
+        -> Then we will check if the product functions as described.
+        -> After checking the functionality if everything works as described then we will deliver the product to you.
+        NOTE: If we find the product faulty then we will refund you immediately and the product will be sent to the seller.");
         $data = array();
         $data['product_id'] = $product_id;
         $data['seller_id'] = $product->user_id;
@@ -148,5 +219,11 @@ class HomeController extends Controller
 
 
 
+    }
+
+
+    public function contactPage()
+    {
+        return view('home.contactPage');
     }
 }

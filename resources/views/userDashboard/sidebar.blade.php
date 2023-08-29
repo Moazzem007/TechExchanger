@@ -11,7 +11,7 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <h1><a href="../../../public/home"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
+            <h1><a href="{{route('home')}}"><img src="{{ asset('home/img/logo.png') }}"></a></h1>
         </div>
 
         <ul class="nav">
